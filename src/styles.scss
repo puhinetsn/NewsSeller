@@ -1,0 +1,43 @@
+@use "./app/styles/mixins" as *;
+@use "./app/styles/variables" as *;
+@use "sass:map";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  font-size: map.get($font-sizes, "bodyText");
+  font-weight: map.get($font-weights, "regular");
+}
+
+h3 {
+  font-size: map.get($font-sizes, "heading3");
+  font-weight: map.get($font-weights, "bold");
+}
+
+h1 {
+  font-size: map.get($font-sizes, "heading1");
+  font-weight: map.get($font-weights, "regular");
+}
+
+.basic-shadow {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

@@ -1,0 +1,30 @@
+@use "sass:map";
+
+$basic-font-size: 1rem;
+
+$font-sizes: (
+  "captions": $basic-font-size * 0.875,
+  "bodyText": $basic-font-size,
+  "heading3": $basic-font-size,
+  "heading1": $basic-font-size * 1.5,
+);
+
+$font-weights: (
+  "regular": 400,
+  "medium": 600,
+  "bold": 700,
+);
+
+$basic-colors: (
+  "darkGrey": #363636,
+  "yellow": #fff96e,
+  "lightGrey": #818181,
+);
+
+$breakpoints: (
+  "xs": 0,
+  "sm": 480px,
+  "md": 720px,
+  "lg": 960px,
+  "xl": 1200px,
+);
