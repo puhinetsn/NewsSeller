@@ -1,0 +1,44 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "sass:map";
+
+.article {
+  &_container {
+    border-radius: 5px;
+    @include flex(column);
+    gap: 25px;
+  }
+
+  &_img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    height: 217px;
+    object-fit: cover;
+  }
+
+  &_title {
+    height: 90px;
+    max-height: 90px;
+  }
+
+  &_date {
+    @include flex(row);
+    color: map.get($basic-colors, "lightGrey");
+    align-items: center;
+    gap: 10px;
+  }
+
+  &_info {
+    padding: 0 25px 25px 25px;
+    color: map.get($basic-colors, "darkGrey");
+    @include flex(column);
+    gap: 25px;
+  }
+
+  &_navigation {
+    color: map.get($basic-colors, "darkGrey");
+    @include flex(row);
+    align-items: center;
+    gap: 10px;
+  }
+}

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "newsseller": {
+    "aroma-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -30,12 +30,7 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/app/styles"]
             },
-            "styles": ["src/styles.scss"],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -65,10 +60,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "newsseller:build:production"
+              "buildTarget": "aroma-front:build:production"
             },
             "development": {
-              "buildTarget": "newsseller:build:development"
+              "buildTarget": "aroma-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,5 +91,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

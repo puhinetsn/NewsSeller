@@ -1,0 +1,29 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "sass:map";
+
+.home {
+  &_articles {
+    @include flex(column);
+    align-items: center;
+    padding: 50px 0;
+    gap: 25px;
+    &_item {
+      width: 80%;
+      max-width: 400px;
+    }
+  }
+}
+
+@include lg {
+  .home {
+    &_articles {
+      @include flex(row);
+      flex-wrap: wrap;
+      justify-content: center;
+      &_item {
+        width: 400px;
+      }
+    }
+  }
+}
