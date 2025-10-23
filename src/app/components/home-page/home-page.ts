@@ -3,10 +3,11 @@ import { Article, PaginatedResponse } from '../../models/news';
 import { News } from '../../services/news';
 import { ArticleCard } from '../article-card/article-card';
 import { ArticleText } from '../article-text/article-text';
+import { Search } from '../search/search';
 
 @Component({
   selector: 'app-home-page',
-  imports: [ArticleCard, ArticleText],
+  imports: [ArticleCard, Search],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

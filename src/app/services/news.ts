@@ -30,4 +30,24 @@ export class News {
         })
       );
   }
+
+  getArticle(id: number): Observable<Article> {
+    return this.http
+      .get<ArticleResponse>(
+        `https://api.spaceflightnewsapi.net/v4/articles/${id}/`
+      )
+      .pipe(
+        map((result) => {
+          const editableArticle = {
+            ...result,
+            published_at: new Date(),
+            updated_at: new Date(),
+          };
+
+          editableArticle.published_at = new Date(editableArticle.published_at);
+          editableArticle.updated_at = new Date(editableArticle.updated_at);
+          return editableArticle;
+        })
+      );
+  }
 }

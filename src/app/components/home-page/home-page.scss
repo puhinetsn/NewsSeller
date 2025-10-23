@@ -3,15 +3,28 @@
 @use "sass:map";
 
 .home {
+  &_container {
+    @include flex(column);
+    align-items: center;
+    padding: 0 10%;
+    gap: 50px;
+  }
+
   &_articles {
     @include flex(column);
     align-items: center;
-    padding: 50px 0;
+    width: 100%;
     gap: 25px;
     &_item {
-      width: 80%;
+      width: 100%;
       max-width: 400px;
     }
+  }
+
+  &_results {
+    border-bottom: 1px solid map.get($basic-colors, "lightGrey");
+    color: map.get($basic-colors, "darkGrey");
+    width: 100%;
   }
 }
 

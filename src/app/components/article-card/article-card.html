@@ -9,7 +9,7 @@
     <h1 class="article_title">{{ article().title }}</h1>
     <p>{{ article().summary | slice : 0 : 100 }}...</p>
 
-    <div class="article_navigation">
+    <div class="article_navigation" (click)="navigate(article().id)">
       <h3>Read more</h3>
       <mat-icon>arrow_right_alt</mat-icon>
     </div>

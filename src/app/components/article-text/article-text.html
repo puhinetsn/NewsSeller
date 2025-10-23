@@ -1,9 +1,12 @@
 <div class="article_container">
-  <div class="article_background"></div>
-  <div class="article_text">
-    <p></p>
+  <div class="article_background">
+    <img src="{{ article()!.image_url }} " class="article_img" />
   </div>
-  <div class="artcile_navigation">
+  <div class="article_text basic-shadow">
+    <h1>{{ article()?.title }}</h1>
+    <p>{{ article()!.summary }}</p>
+  </div>
+  <div class="article_navigation" (click)="navigate()">
     <mat-icon>keyboard_backspace</mat-icon>
     <h3>Back to homepage</h3>
   </div>

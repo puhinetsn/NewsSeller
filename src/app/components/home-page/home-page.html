@@ -1,7 +1,12 @@
-<!-- <div class="home_articles">
-  @for (article of articles()?.results; track article.id){
-  <app-article-card [article]="article" class="home_articles_item" />
-  }
-</div> -->
+<div class="home_container">
+  <app-search />
+  <div class="home_results">
+    <h3>Results: {{ articles()?.results?.length }}</h3>
+  </div>
 
-<app-article-text />
+  <div class="home_articles">
+    @for (article of articles()?.results; track article.id){
+    <app-article-card [article]="article" class="home_articles_item" />
+    }
+  </div>
+</div>

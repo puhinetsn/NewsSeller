@@ -36,6 +36,7 @@
   }
 
   &_navigation {
+    cursor: pointer;
     color: map.get($basic-colors, "darkGrey");
     @include flex(row);
     align-items: center;
