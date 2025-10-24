@@ -28,7 +28,6 @@ export class HomePage implements OnInit {
   }
 
   onSearch(term: string) {
-    console.log(term);
     this.searchTerm.set(term);
     this.changeList();
   }
