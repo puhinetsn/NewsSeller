@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, switchMap, of } from 'rxjs';
 import { Article, ArticleResponse, PaginatedResponse } from '../models/news';
 
 @Injectable({
@@ -8,25 +8,48 @@ import { Article, ArticleResponse, PaginatedResponse } from '../models/news';
 })
 export class News {
   private http = inject(HttpClient);
+
   getArticles(search?: string): Observable<PaginatedResponse<Article>> {
     return this.http
       .get<PaginatedResponse<ArticleResponse>>(
-        `https://api.spaceflightnewsapi.net/v4/articles/?limit=6&search=${search}`
+        `https://api.spaceflightnewsapi.net/v4/articles/?limit=6&title_contains_all=${search}`
       )
       .pipe(
-        map((result) => {
-          const articles = result.results;
-          const newArticles = articles.map((article) => {
-            const mappedArticle: Article = {
+        switchMap((resultTitle) => {
+          const mapArticles = (
+            res: PaginatedResponse<ArticleResponse>
+          ): PaginatedResponse<Article> => ({
+            ...res,
+            results: res.results.map((article) => ({
               ...article,
-              published_at: new Date(),
-              updated_at: new Date(),
-            };
-            mappedArticle.published_at = new Date(article.published_at);
-            mappedArticle.updated_at = new Date(article.updated_at);
-            return mappedArticle;
+              published_at: new Date(article.published_at),
+              updated_at: new Date(article.updated_at),
+            })),
           });
-          return { ...result, results: newArticles };
+
+          if (resultTitle.results.length >= 6) {
+            return of(mapArticles(resultTitle));
+          }
+
+          return this.http
+            .get<PaginatedResponse<ArticleResponse>>(
+              `https://api.spaceflightnewsapi.net/v4/articles/?limit=${
+                6 - resultTitle.results.length
+              }&summary_contains_all=${search}`
+            )
+            .pipe(
+              map((resultSummary) => {
+                const mergedResults = [
+                  ...resultTitle.results,
+                  ...resultSummary.results,
+                ];
+
+                return mapArticles({
+                  ...resultTitle,
+                  results: mergedResults,
+                });
+              })
+            );
         })
       );
   }
@@ -37,17 +60,11 @@ export class News {
         `https://api.spaceflightnewsapi.net/v4/articles/${id}/`
       )
       .pipe(
-        map((result) => {
-          const editableArticle = {
-            ...result,
-            published_at: new Date(),
-            updated_at: new Date(),
-          };
-
-          editableArticle.published_at = new Date(editableArticle.published_at);
-          editableArticle.updated_at = new Date(editableArticle.updated_at);
-          return editableArticle;
-        })
+        map((result) => ({
+          ...result,
+          published_at: new Date(result.published_at),
+          updated_at: new Date(result.updated_at),
+        }))
       );
   }
 }

@@ -21,7 +21,7 @@ export class Search implements OnInit {
       .pipe(
         debounceTime(300),
         distinctUntilChanged(),
-        map((value) => (value ?? '').trim()),
+        map((value) => (value ?? '').trim().split(' ').join(',')),
         filter((value) => value.length === 0 || value.length >= 2),
         takeUntilDestroyed(this.destroyRef)
       )

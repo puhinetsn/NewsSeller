@@ -19,6 +19,12 @@
   &_title {
     height: 90px;
     max-height: 90px;
+    overflow: hidden;
+    max-width: 355px;
+  }
+
+  &_summary {
+    min-height: 96px;
   }
 
   &_date {

@@ -28,6 +28,7 @@ export class HomePage implements OnInit {
   }
 
   onSearch(term: string) {
+    console.log(term);
     this.searchTerm.set(term);
     this.changeList();
   }
@@ -35,7 +36,6 @@ export class HomePage implements OnInit {
   changeList() {
     this.newsService.getArticles(this.searchTerm()).subscribe((articles) => {
       this.articles.set(articles);
-      console.log(articles.results.length);
     });
   }
 }

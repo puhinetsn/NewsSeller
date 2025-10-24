@@ -7,7 +7,9 @@
       <p>{{ article().published_at | date : "mediumDate" }}</p>
     </div>
     <h1 class="article_title">{{ article().title }}</h1>
-    <p>{{ article().summary | slice : 0 : 100 }}...</p>
+    <div class="article_summary">
+      <p>{{ article().summary | slice : 0 : 100 }}...</p>
+    </div>
 
     <div class="article_navigation" (click)="navigate(article().id)">
       <h3>Read more</h3>
