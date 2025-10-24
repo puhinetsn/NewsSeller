@@ -1,5 +1,5 @@
 <div class="home_container">
-  <app-search />
+  <app-search class="home_search" (searchChanged)="onSearch($event)" />
   <div class="home_results">
     <h3>Results: {{ articles()?.results?.length }}</h3>
   </div>

@@ -8,10 +8,10 @@ import { Article, ArticleResponse, PaginatedResponse } from '../models/news';
 })
 export class News {
   private http = inject(HttpClient);
-  getArticles(): Observable<PaginatedResponse<Article>> {
+  getArticles(search?: string): Observable<PaginatedResponse<Article>> {
     return this.http
       .get<PaginatedResponse<ArticleResponse>>(
-        'https://api.spaceflightnewsapi.net/v4/articles/?limit=6'
+        `https://api.spaceflightnewsapi.net/v4/articles/?limit=6&search=${search}`
       )
       .pipe(
         map((result) => {

@@ -1,4 +1,14 @@
-<mat-form-field class="example-full-width">
-  <mat-label>First name</mat-label>
-  <input matInput />
-</mat-form-field>
+<div class="search_container">
+  <h3 class="search_title">Filter by keywords</h3>
+  <div class="search_input basic-shadow">
+    <mat-icon>search</mat-icon>
+
+    <input
+      #searchQuery
+      type="text"
+      class="search_input_field"
+      placeholder="The most successful IT companies in 2020"
+      [formControl]="searchControl"
+    />
+  </div>
+</div>
