@@ -1,0 +1,33 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "sass:map";
+
+.search {
+  &_container {
+    @include flex(column);
+    gap: 10px;
+  }
+  &_input {
+    @include flex(row);
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    padding: 12.5px;
+    width: 100%;
+    max-width: 600px;
+    &_field {
+      background-color: map.get($basic-colors, "white");
+      border: 0;
+      width: 100%;
+      font-size: map-get($font-sizes, "bodyText");
+      font-family: "Montserrat", sans-serif;
+    }
+
+    input[type="text"]:focus,
+    input[type="text"]:active,
+    input[type="text"]:focus-visible {
+      border: none;
+      outline: none;
+    }
+  }
+}

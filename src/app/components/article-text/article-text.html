@@ -1,0 +1,21 @@
+<div class="article_container">
+  @if (loading()) {
+  <p class="loading-text">Loading article...</p>
+  } @else if (article()) {
+  <div class="article_background">
+    <img [src]="article()?.image_url" class="article_img" />
+  </div>
+
+  <div class="article_text basic-shadow">
+    <h1>{{ article()?.title }}</h1>
+    <p>{{ article()?.summary }}</p>
+  </div>
+
+  <div class="article_navigation" (click)="navigate()">
+    <mat-icon>keyboard_backspace</mat-icon>
+    <h3>Back to homepage</h3>
+  </div>
+  } @else {
+  <p class="not-found">Article not found.</p>
+  }
+</div>

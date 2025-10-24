@@ -1,0 +1,69 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "sass:map";
+
+.home {
+  &_container {
+    @include flex(column);
+    align-items: center;
+    gap: 50px;
+    padding: 50px 0;
+  }
+
+  &_articles {
+    @include flex(column);
+    align-items: center;
+    width: 80%;
+    gap: 25px;
+    max-width: 1290px;
+    &_item {
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+
+  &_results {
+    border-bottom: 1px solid map.get($basic-colors, "lightGrey");
+    color: map.get($basic-colors, "darkGrey");
+    max-width: 1240px;
+    width: 80%;
+  }
+
+  &_search {
+    max-width: 1240px;
+    width: 80%;
+  }
+}
+
+@include lg {
+  .home {
+    &_articles {
+      @include flex(row);
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      &_item {
+        width: 400px;
+      }
+    }
+    &_results {
+      width: 85%;
+    }
+
+    &_search {
+      width: 85%;
+    }
+  }
+}
+
+@include xl {
+  .home {
+    &_results {
+      width: 100%;
+    }
+
+    &_search {
+      width: 100%;
+    }
+  }
+}

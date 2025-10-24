@@ -1,0 +1,43 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "sass:map";
+
+.article {
+  &_container {
+    @include flex(column);
+    align-items: center;
+  }
+  &_background {
+    width: 100%;
+  }
+  &_img {
+    object-fit: cover;
+    width: 100%;
+    height: 245px;
+  }
+
+  &_text {
+    background-color: map.get($basic-colors, "white");
+    width: 90%;
+    max-width: 1290px;
+    @include flex(column);
+    gap: 25px;
+    padding: 25px;
+    position: relative;
+    top: -50px;
+    h1 {
+      text-align: center;
+    }
+    color: map.get($basic-colors, "darkGrey");
+  }
+
+  &_navigation {
+    cursor: pointer;
+    color: map.get($basic-colors, "darkGrey");
+    @include flex(row);
+    width: 80%;
+    align-items: center;
+    max-width: 1290px;
+    gap: 10px;
+  }
+}

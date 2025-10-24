@@ -1,0 +1,21 @@
+<div class="article_container basic-shadow">
+  <img [src]="article().image_url" class="article_img" />
+
+  <div class="article_info">
+    <div class="article_date">
+      <mat-icon>calendar_today</mat-icon>
+      <p>{{ article().published_at | date : "mediumDate" }}</p>
+    </div>
+
+    <h1 class="article_title" [innerHTML]="highlightedTitle"></h1>
+
+    <div class="article_summary">
+      <p [innerHTML]="(highlightedSummary | slice : 0 : 100) + '...'"></p>
+    </div>
+
+    <div class="article_navigation" (click)="navigate(article().id)">
+      <h3>Read more</h3>
+      <mat-icon>arrow_right_alt</mat-icon>
+    </div>
+  </div>
+</div>
